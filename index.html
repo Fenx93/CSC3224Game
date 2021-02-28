@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | 3/10</title>
+    <title>Unity WebGL Player | Killer Wave</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -16,23 +16,26 @@
           <div id="unity-progress-bar-full"></div>
         </div>
       </div>
+      <div id="unity-mobile-warning">
+        WebGL builds are not supported on mobile devices.
+      </div>
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">3/10</div>
+        <div id="unity-build-title">Killer Wave</div>
       </div>
     </div>
     <script>
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/CSC3224Game.loader.js";
+      var loaderUrl = buildUrl + "/CW1_Build.loader.js";
       var config = {
-        dataUrl: buildUrl + "/CSC3224Game.data",
-        frameworkUrl: buildUrl + "/CSC3224Game.framework.js",
-        codeUrl: buildUrl + "/CSC3224Game.wasm",
+        dataUrl: buildUrl + "/CW1_Build.data",
+        frameworkUrl: buildUrl + "/CW1_Build.framework.js",
+        codeUrl: buildUrl + "/CW1_Build.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "Fenx93",
-        productName: "3/10",
-        productVersion: "0.1",
+        productName: "Killer Wave",
+        productVersion: "1.0",
       };
 
       var container = document.querySelector("#unity-container");
@@ -40,10 +43,15 @@
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var mobileWarning = document.querySelector("#unity-mobile-warning");
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         container.className = "unity-mobile";
         config.devicePixelRatio = 1;
+        mobileWarning.style.display = "block";
+        setTimeout(() => {
+          mobileWarning.style.display = "none";
+        }, 5000);
       } else {
         canvas.style.width = "960px";
         canvas.style.height = "600px";
